@@ -5,12 +5,12 @@ Peasant::Peasant(const std::string &name, int power)
         m_hp(100), m_costAttack(10), m_costSpecial(0), m_costRest(0),
         m_damageAttack(5), m_damageSpecial(0)
 {
-    std::cout << m_name + " goes for an adventure." << std::endl;
+    std::cout << m_name << " goes for an adventure." << std::endl;
 }
 
 Peasant::~Peasant(void)
 {
-    std::cout << m_name + " is back to his crops." << std::endl;
+    std::cout << m_name << " is back to his crops." << std::endl;
 }
 
 const std::string       &Peasant::getName(void) const
