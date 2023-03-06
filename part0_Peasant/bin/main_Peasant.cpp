@@ -40,5 +40,8 @@ int main()
     std::cout << "p.getDamageSpecial = " << p.getDamageSpecial() << std::endl;
     p.setDamageSpecial(20);
     std::cout << "p.getDamageSpecial after setDamageSpecial = " << p.getDamageSpecial() << std::endl;
+
+    std::cout << "p.attack = " << p.attack() << std::endl;
+    std::cout << "p.getPower aftter p.attack = " << p.getPower() << std::endl;
     return 0;
 }

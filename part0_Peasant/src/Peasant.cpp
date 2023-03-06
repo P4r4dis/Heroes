@@ -102,3 +102,11 @@ void                    Peasant::setDamageSpecial(int damageSpecial)
 {
     m_damageSpecial = damageSpecial;
 }
+
+int                     Peasant::attack()
+{
+    m_power -= m_costAttack;
+    std::cout << m_name << " tosses a stone." << std::endl;
+    
+    return m_damageAttack;
+}
