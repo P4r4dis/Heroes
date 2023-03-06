@@ -2,7 +2,7 @@
 
 int main()
 {
-    Peasant     p("Gildas", 42);
+    Peasant     p("Gildas2", 42);
 
     std::cout << "p.getName = " << p.getName() << std::endl;
 
@@ -65,5 +65,13 @@ int main()
     p.damage(100);
     std::cout << "p.getHp after p.damage = " << p.getHp() << std::endl;
 
+
+    std::cout << "REAL MAIN STARTING :" << std::endl;
+    Peasant     peasant("Gildas", 42);
+
+    peasant.damage(50);
+    peasant.damage(100);
+    peasant.damage(200);
+    peasant.rest();
     return 0;
 }

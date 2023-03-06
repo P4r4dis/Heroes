@@ -130,11 +130,16 @@ int                     Peasant::special()
 
 void                    Peasant::rest()
 {
-    m_power -= m_costRest;
-    m_power += m_rest;
-    if (m_power > 100)
-        m_power = 100;
-    std::cout << m_name << " takes a nap." << std::endl;
+    if (m_hp > 0)
+    {
+        m_power -= m_costRest;
+        m_power += m_rest;
+        if (m_power > 100)
+            m_power = 100;
+        std::cout << m_name << " takes a nap." << std::endl;
+    }
+    else
+        std::cout << m_name << " is out of combat." << std::endl;
 }
 
 void                    Peasant::damage(int damage)
@@ -147,5 +152,4 @@ void                    Peasant::damage(int damage)
     }
     else
         std::cout << m_name << " takes " << damage << " damage." << std::endl;
-
 }

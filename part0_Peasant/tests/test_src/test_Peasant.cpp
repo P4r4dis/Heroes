@@ -152,5 +152,4 @@ void                    Peasant::damage(int damage)
     }
     else
         std::cout << m_name << " takes " << damage << " damage." << std::endl;
-
 }
