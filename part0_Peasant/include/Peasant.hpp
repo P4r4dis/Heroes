@@ -31,6 +31,8 @@ class                       Peasant
         int                 attack(void);
         int                 special(void);
         void                rest(void);
+
+        void                damage(int damage);
     protected:
     private:
         const std::string   m_name;

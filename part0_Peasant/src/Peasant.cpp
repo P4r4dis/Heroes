@@ -136,3 +136,16 @@ void                    Peasant::rest()
         m_power = 100;
     std::cout << m_name << " takes a nap." << std::endl;
 }
+
+void                    Peasant::damage(int damage)
+{
+    m_hp -= damage;
+    if (m_hp <= 0)
+    {
+        m_hp = 0;
+        std::cout << m_name << " is out of combat." << std::endl;
+    }
+    else
+        std::cout << m_name << " takes " << damage << " damage." << std::endl;
+
+}

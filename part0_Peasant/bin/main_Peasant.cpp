@@ -58,5 +58,12 @@ int main()
     p.rest();
     std::cout << "p.getPower after p.rest = " << p.getPower() << std::endl;
 
+    std::cout << "p.getHp before to receive damage = " << p.getHp() << std::endl;
+    p.damage(50);
+    std::cout << "p.getHp after p.damage = " << p.getHp() << std::endl;
+    std::cout << "p.getHp before to receive damage = " << p.getHp() << std::endl;
+    p.damage(100);
+    std::cout << "p.getHp after p.damage = " << p.getHp() << std::endl;
+
     return 0;
 }
