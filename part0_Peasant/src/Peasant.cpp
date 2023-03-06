@@ -3,7 +3,7 @@
 Peasant::Peasant(const std::string &name, int power)
     :   m_name(name), m_power((power > 100) ? power = 100 : power),
         m_hp(100), m_costAttack(10), m_costSpecial(0), m_costRest(0),
-        m_damageAttack(5), m_damageSpecial(0)
+        m_damageAttack(5), m_damageSpecial(0), m_rest(30)
 {
     std::cout << m_name << " goes for an adventure." << std::endl;
     if (m_power <= 0)
@@ -58,6 +58,11 @@ int                     Peasant::getDamageSpecial(void) const
     return m_damageSpecial;
 }
 
+int                     Peasant::getRest(void) const
+{
+    return m_rest;
+}
+
 void                    Peasant::setPower(int power)
 {
     (power > 100) ? m_power = 100 : m_power = power;
@@ -103,6 +108,11 @@ void                    Peasant::setDamageSpecial(int damageSpecial)
     m_damageSpecial = damageSpecial;
 }
 
+void                    Peasant::setRest(int rest)
+{
+    m_rest = rest;
+}
+
 int                     Peasant::attack()
 {
     m_power -= m_costAttack;
@@ -116,4 +126,13 @@ int                     Peasant::special()
     m_power -= m_costSpecial;
     std::cout << m_name << " doesn't know any special move." << std::endl;
     return m_damageSpecial;
+}
+
+void                    Peasant::rest()
+{
+    m_power -= m_costRest;
+    m_power += m_rest;
+    if (m_power > 100)
+        m_power = 100;
+    std::cout << m_name << " takes a nap." << std::endl;
 }

@@ -33,6 +33,7 @@ int main()
     std::cout << "p.getCostRest = " << p.getCostRest() << std::endl;
     p.setCostRest(20);
     std::cout << "p.getCostRest after setCostRest = " << p.getCostRest() << std::endl;
+    p.setCostRest(0);
 
     std::cout << "p.getDamageAttack = " << p.getDamageAttack() << std::endl;
     p.setDamageAttack(20);
@@ -48,5 +49,14 @@ int main()
 
     std::cout << "p.special = " << p.special() << std::endl;
     std::cout << "p.getPower aftter p.special = " << p.getPower() << std::endl;
+
+    std::cout << "p.getRest = " << p.getRest() << std::endl;
+    p.setRest(50);
+    std::cout << "p.getRest after setRest = " << p.getRest() << std::endl;
+    p.setRest(30);
+    std::cout << "p.getPower befor p.rest = " << p.getPower() << std::endl;
+    p.rest();
+    std::cout << "p.getPower after p.rest = " << p.getPower() << std::endl;
+
     return 0;
 }
