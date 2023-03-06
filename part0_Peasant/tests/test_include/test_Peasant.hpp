@@ -17,6 +17,7 @@ class                       Peasant
         int                 getCostRest(void) const;
         int                 getDamageAttack(void) const;
         int                 getDamageSpecial(void) const;
+        int                 getRest(void) const;
 
         void                setPower(int power);
         void                setHp(int hp);
@@ -25,9 +26,11 @@ class                       Peasant
         void                setCostRest(int costRest);
         void                setDamageAttack(int DamageAttack);
         void                setDamageSpecial(int DamageSpecial);
+        void                setRest(int rest);
 
         int                 attack(void);
         int                 special(void);
+        void                rest(void);
     protected:
     private:
         const std::string   m_name;
@@ -38,5 +41,6 @@ class                       Peasant
         int                 m_costRest;
         int                 m_damageAttack;
         int                 m_damageSpecial;
+        int                 m_rest;
 };
 #endif //          !__TEST_PEASANT__
