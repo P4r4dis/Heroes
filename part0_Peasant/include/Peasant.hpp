@@ -2,6 +2,7 @@
 # define    __PEASANT__
 #include <string>
 #include <iostream>
+
 class                       Peasant
 {
     public:
@@ -26,6 +27,7 @@ class                       Peasant
         void                setDamageSpecial(int DamageSpecial);
 
         int                 attack(void);
+        int                 special(void);
     protected:
     private:
         const std::string   m_name;

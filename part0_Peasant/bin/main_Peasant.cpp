@@ -28,6 +28,7 @@ int main()
     std::cout << "p.getCostSpecial = " << p.getCostSpecial() << std::endl;
     p.setCostSpecial(20);
     std::cout << "p.getCostSpecial after setCostSpecial = " << p.getCostSpecial() << std::endl;
+    p.setCostSpecial(0);
 
     std::cout << "p.getCostRest = " << p.getCostRest() << std::endl;
     p.setCostRest(20);
@@ -40,8 +41,12 @@ int main()
     std::cout << "p.getDamageSpecial = " << p.getDamageSpecial() << std::endl;
     p.setDamageSpecial(20);
     std::cout << "p.getDamageSpecial after setDamageSpecial = " << p.getDamageSpecial() << std::endl;
+    p.setDamageSpecial(0);
 
     std::cout << "p.attack = " << p.attack() << std::endl;
     std::cout << "p.getPower aftter p.attack = " << p.getPower() << std::endl;
+
+    std::cout << "p.special = " << p.special() << std::endl;
+    std::cout << "p.getPower aftter p.special = " << p.getPower() << std::endl;
     return 0;
 }
