@@ -111,3 +111,21 @@ Test(Peasant, test_damage, .signal = SIGPIPE, .init = redirect_all_stdout)
     "Gildas is out of combat.\n"
     "Gildas is back to his crops.\n");
 }
+
+Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Peasant     peasant("Gildas", 42);
+
+    peasant.damage(50);
+    peasant.damage(100);
+    peasant.damage(200);
+    peasant.rest();
+
+    peasant.~Peasant();
+    cr_assert_stdout_eq_str("Gildas goes for an adventure.\n"
+    "Gildas takes 50 damage.\n"
+    "Gildas is out of combat.\n"
+    "Gildas is out of combat.\n"
+    "Gildas is out of combat.\n"
+    "Gildas is back to his crops.\n");
+}
