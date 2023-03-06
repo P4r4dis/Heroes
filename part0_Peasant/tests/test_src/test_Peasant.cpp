@@ -110,3 +110,10 @@ int                     Peasant::attack()
     
     return m_damageAttack;
 }
+
+int                     Peasant::special()
+{
+    m_power -= m_costSpecial;
+    std::cout << m_name << " doesn't know any special move." << std::endl;
+    return m_damageSpecial;
+}

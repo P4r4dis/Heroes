@@ -66,3 +66,15 @@ Test(Peasant, test_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
     "Gildas tosses a stone.\n"
     "Gildas is back to his crops.\n");
 }
+
+Test(Peasant, test_special, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Peasant     peasant("Gildas", 100);
+
+    cr_assert(peasant.special() == 0);
+    cr_assert(peasant.getPower() == 100);
+    peasant.~Peasant();
+    cr_assert_stdout_eq_str("Gildas goes for an adventure.\n"
+    "Gildas doesn't know any special move.\n"
+    "Gildas is back to his crops.\n");
+}
