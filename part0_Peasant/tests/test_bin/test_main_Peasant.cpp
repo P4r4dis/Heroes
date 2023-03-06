@@ -43,7 +43,7 @@ Test(Peasant, test_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
     cr_assert_stdout_eq_str("Gildas goes for an adventure.\nGildas is back to his crops.\n");
 }
 
-Test(Peasant, test_out_of_combat, .signal = SIGPIPE, .init = redirect_all_stdout)
+Test(Peasant, test_out_of_combat_and_power, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
     Peasant     peasant("Gildas", 0);
     peasant.setHp(0);
@@ -52,5 +52,17 @@ Test(Peasant, test_out_of_combat, .signal = SIGPIPE, .init = redirect_all_stdout
     cr_assert_stdout_eq_str("Gildas goes for an adventure.\n"
     "Gildas is out of power.\n"
     "Gildas is out of combat.\n"
+    "Gildas is back to his crops.\n");
+}
+
+Test(Peasant, test_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Peasant     peasant("Gildas", 100);
+
+    cr_assert(peasant.attack() == 5);
+    cr_assert(peasant.getPower() == 90);
+    peasant.~Peasant();
+    cr_assert_stdout_eq_str("Gildas goes for an adventure.\n"
+    "Gildas tosses a stone.\n"
     "Gildas is back to his crops.\n");
 }

@@ -25,6 +25,8 @@ class                       Peasant
         void                setCostRest(int costRest);
         void                setDamageAttack(int DamageAttack);
         void                setDamageSpecial(int DamageSpecial);
+
+        int                 attack(void);
     protected:
     private:
         const std::string   m_name;
