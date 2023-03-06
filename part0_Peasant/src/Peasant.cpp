@@ -6,6 +6,11 @@ Peasant::Peasant(const std::string &name, int power)
         m_damageAttack(5), m_damageSpecial(0)
 {
     std::cout << m_name << " goes for an adventure." << std::endl;
+    if (m_power <= 0)
+    {
+        m_power = 0;
+        std::cout << m_name << " is out of power." << std::endl;
+    }
 }
 
 Peasant::~Peasant(void)
@@ -56,11 +61,21 @@ int                     Peasant::getDamageSpecial(void) const
 void                    Peasant::setPower(int power)
 {
     (power > 100) ? m_power = 100 : m_power = power;
+    if (m_power <= 0)
+    {
+        m_power = 0;
+        std::cout << m_name << " is out of power." << std::endl;
+    }
 }
 
 void                    Peasant::setHp(int hp)
 {
     (hp > 100) ? m_hp = 100 : m_hp = hp;
+    if (m_hp <= 0)
+    {
+        m_hp = 0;
+        std::cout << m_name << " is out of combat." << std::endl;
+    }
 }
 
 void                    Peasant::setCostAttack(int costAttack)

@@ -6,10 +6,17 @@ int main()
 
     std::cout << "p.getName = " << p.getName() << std::endl;
 
+
+    std::cout << "p.getPower = " << p.getPower() << std::endl;
+    p.setPower(-10);
+    std::cout << "p.getPower after p.setPower = " << p.getPower() << std::endl;
     std::cout << "p.getPower = " << p.getPower() << std::endl;
     p.setPower(150);
     std::cout << "p.getPower after p.setPower = " << p.getPower() << std::endl;
 
+    std::cout << "p.getHp = " << p.getHp() << std::endl;
+    p.setHp(-150);
+    std::cout << "p.getHp after p.setHp = " << p.getHp() << std::endl;
     std::cout << "p.getHp = " << p.getHp() << std::endl;
     p.setHp(150);
     std::cout << "p.getHp after p.setHp = " << p.getHp() << std::endl;
