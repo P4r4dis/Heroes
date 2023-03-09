@@ -146,41 +146,37 @@ Test(Enchanter, test_Enchanter_construction, .signal = SIGPIPE, .init = redirect
     "Merlin is back to his crops.\n");
 }
 
-// Test(Enchanter, test_Enchanter_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
-// {
-//     Enchanter      k("Merlin", 20);
+Test(Enchanter, test_Enchanter_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Enchanter      E("Merlin", 20);
 
-//     k.attack();
-//     k.attack();
-//     k.attack();
-//     k.setHp(0);
-//     k.attack();
+    E.attack();
+    E.setHp(0);
+    E.attack();
 
-//     cr_assert(k.getPower() == 0);
-//     cr_assert(k.getDamageAttack() == 20);
+    cr_assert(E.getPower() == 20);
+    cr_assert(E.getDamageAttack() == 0);
 
-//     k.~Enchanter();
-//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
-//     "Merlin learns magic from his spellbook.\n"
-//     "Merlin strikes with his sword.\n"
-//     "Merlin strikes with his sword.\n"
-//     "Merlin is out of power.\n"
-//     "Merlin is out of combat.\n"
-//     "Merlin closes his spellbook.\n"
-//     "Merlin is back to his crops.\n");
-// }
+    E.~Enchanter();
+    cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+    "Merlin learns magic from his spellbook.\n"
+    "Merlin don't know how to fight.\n"
+    "Merlin is out of combat.\n"
+    "Merlin closes his spellbook.\n"
+    "Merlin is back to his crops.\n");
+}
 
 // Test(Enchanter, test_Enchanter_special, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Merlin", 42);
+//     Enchanter      E("Merlin", 42);
 
-//     cr_assert(k.special() == 50);
-//     cr_assert(k.special() == 0);
+//     cr_assert(E.special() == 50);
+//     cr_assert(E.special() == 0);
 
-//     k.setHp(0);
-//     cr_assert(k.special() == 0);
+//     E.setHp(0);
+//     cr_assert(E.special() == 0);
 
-//     k.~Enchanter();
+//     E.~Enchanter();
 //     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
 //     "Merlin learns magic from his spellbook.\n"
 //     "Merlin impales his ennemy.\n"
@@ -192,18 +188,18 @@ Test(Enchanter, test_Enchanter_construction, .signal = SIGPIPE, .init = redirect
 
 // Test(Enchanter, test_Enchanter_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Merlin", 0);
+//     Enchanter      E("Merlin", 0);
 
-//     cr_assert(k.getPower() == 0);
-//     k.special();
-//     k.rest();
-//     cr_assert(k.getPower() == 50);
-//     k.special();
+//     cr_assert(E.getPower() == 0);
+//     E.special();
+//     E.rest();
+//     cr_assert(E.getPower() == 50);
+//     E.special();
 
-//     k.setHp(0);
-//     k.rest();
+//     E.setHp(0);
+//     E.rest();
 
-//     k.~Enchanter();
+//     E.~Enchanter();
 //     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
 //     "Merlin learns magic from his spellbook.\n"
 //     "Merlin is out of power.\n"
@@ -216,9 +212,9 @@ Test(Enchanter, test_Enchanter_construction, .signal = SIGPIPE, .init = redirect
 
 // Test(Enchanter, test_Enchanter_destruction, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Merlin", 0);
+//     Enchanter      E("Merlin", 0);
 
-//     k.~Enchanter();
+//     E.~Enchanter();
 //     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
 //     "Merlin learns magic from his spellbook.\n"
 //     "Merlin closes his spellbook.\n"
@@ -227,19 +223,19 @@ Test(Enchanter, test_Enchanter_construction, .signal = SIGPIPE, .init = redirect
 
 // Test(Enchanter, test_Enchanter_main, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Merlin", 20);
+//     Enchanter      E("Merlin", 20);
 
-//     k.attack();
-//     k.special();
-//     k.rest();
-//     k.special();
-//     k.damage(50);
-//     cr_assert(k.getHp() == 50);
+//     E.attack();
+//     E.special();
+//     E.rest();
+//     E.special();
+//     E.damage(50);
+//     cr_assert(E.getHp() == 50);
 
-//     k.~Enchanter();
+//     E.~Enchanter();
 //     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
 //     "Merlin learns magic from his spellbook.\n"
-//     "Merlin strikes with his sword.\n"
+//     "Merlin don't know how to fight.\n"
 //     "Merlin is out of power.\n"
 //     "Merlin eats.\n"
 //     "Merlin impales his ennemy.\n"

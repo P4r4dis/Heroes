@@ -10,31 +10,23 @@ Enchanter::~Enchanter()
     std::cout << getName() << " closes his spellbook." << std::endl;
 }
 
-// int                     Enchanter::attack()
-// {
-//     int damage = getDamageAttack();
+int                     Enchanter::attack()
+{
+    if(getHp() <= 0)
+    {
+        std::cout << getName() << " is out of combat." << std::endl;
 
-//     if(getHp() <= 0)
-//     {
-//         std::cout << getName() << " is out of combat." << std::endl;
-
-//         return 0;
-//     }
-//     else if (getPower() >= 10)
-//     {
-//         setDamageAttack(20);
-//         setPower(getPower() - getCostAttack());
-//         std::cout << getName() << " strikes with his sword." << std::endl;
-//     }
-//     else
-//     {
-//         std::cout << getName() << " is out of power." << std::endl;
-
-//         return 0;
-//     }
-    
-//     return damage;
-// }
+        return 0;
+    }
+    else
+    {
+        setDamageAttack(0);
+        setCostAttack(0);
+        setPower(getPower() - getCostAttack());
+        std::cout << getName() << " don't know how to fight." << std::endl;
+        return getDamageAttack();
+    }
+}
 
 // int                     Enchanter::special()
 // {
