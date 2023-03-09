@@ -2,12 +2,12 @@
 
 Enchanter::Enchanter(const std::string &name, int power) : Peasant(name, power)
 {
-    std::cout << getName() << " vows to protect the kingdom." << std::endl;
+    std::cout << getName() << " learns magic from his spellbook." << std::endl;
 }
 
 Enchanter::~Enchanter()
 {
-    std::cout << getName() << " takes off his armor." << std::endl;
+    std::cout << getName() << " closes his spellbook." << std::endl;
 }
 
 // int                     Enchanter::attack()
