@@ -140,3 +140,16 @@ Test(Knight, test_Knight_construction, .signal = SIGPIPE, .init = redirect_all_s
     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
     "Arthur is back to his crops.\n");
 }
+
+Test(Knight, test_Knight_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Knight      k("Arthur", 20);
+
+    k.attack();
+    cr_assert(k.getPower() == 10);
+    cr_assert(k.getDamageAttack() == 20);
+    k.~Knight();
+    cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
+    "Arthur strikes with his sword.\n"
+    "Arthur is back to his crops.\n");
+}
