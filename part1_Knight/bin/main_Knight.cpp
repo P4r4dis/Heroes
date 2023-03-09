@@ -3,9 +3,9 @@
 int main()
 {
     std::cout << "REAL MAIN STARTING :" << std::endl;
-    Knight      k("Thrall", 20);
+    Knight      k("Thrall", 40);
 
     k.attack();
-
+    k.special();
     return 0;
 }
