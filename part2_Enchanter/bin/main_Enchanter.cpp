@@ -8,5 +8,12 @@ int main()
     E.special();
     E.rest();
     std::cout << "REAL MAIN STARTING :" << std::endl;
+    Enchanter      enchanter("Merlin", 20);
+
+    enchanter.attack();
+    enchanter.special();
+    enchanter.rest();
+    enchanter.special();
+    enchanter.damage(50);
     return 0;
 }
