@@ -10,6 +10,8 @@ class                   Enchanter : virtual public Peasant
 
         int             attack(void);
         int             special(void);
+        void            rest(void);
+
     protected:
     private:
 

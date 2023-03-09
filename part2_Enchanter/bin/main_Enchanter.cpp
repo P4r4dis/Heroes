@@ -6,6 +6,7 @@ int main()
 
     E.attack();
     E.special();
+    E.rest();
     std::cout << "REAL MAIN STARTING :" << std::endl;
     return 0;
 }

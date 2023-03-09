@@ -56,14 +56,14 @@ int                     Enchanter::special()
     return damageSpecial;
 }
 
-// void                    Enchanter::rest()
-// {
-//     if(getHp() <= 0)
-//         std::cout << getName() << " is out of combat." << std::endl;
-//     else
-//     {
-//         setRest(50);
-//         setPower(getPower() + getRest());
-//         std::cout << getName() << " eats." << std::endl;
-//     }
-// }
+void                    Enchanter::rest()
+{
+    if(getHp() <= 0)
+        std::cout << getName() << " is out of combat." << std::endl;
+    else
+    {
+        setRest(100);
+        setPower(getPower() + getRest());
+        std::cout << getName() << " meditates." << std::endl;
+    }
+}
