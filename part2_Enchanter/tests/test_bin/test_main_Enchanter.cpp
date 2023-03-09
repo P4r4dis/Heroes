@@ -166,25 +166,25 @@ Test(Enchanter, test_Enchanter_attack, .signal = SIGPIPE, .init = redirect_all_s
     "Merlin is back to his crops.\n");
 }
 
-// Test(Enchanter, test_Enchanter_special, .signal = SIGPIPE, .init = redirect_all_stdout)
-// {
-//     Enchanter      E("Merlin", 42);
+Test(Enchanter, test_Enchanter_special, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Enchanter      E("Merlin", 50);
 
-//     cr_assert(E.special() == 50);
-//     cr_assert(E.special() == 0);
+    cr_assert(E.special() == 99);
+    cr_assert(E.special() == 0);
 
-//     E.setHp(0);
-//     cr_assert(E.special() == 0);
+    E.setHp(0);
+    cr_assert(E.special() == 0);
 
-//     E.~Enchanter();
-//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
-//     "Merlin learns magic from his spellbook.\n"
-//     "Merlin impales his ennemy.\n"
-//     "Merlin is out of power.\n"
-//     "Merlin is out of combat.\n"
-//     "Merlin closes his spellbook.\n"
-//     "Merlin is back to his crops.\n");
-// }
+    E.~Enchanter();
+    cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+    "Merlin learns magic from his spellbook.\n"
+    "Merlin casts a fireball.\n"
+    "Merlin is out of power.\n"
+    "Merlin is out of combat.\n"
+    "Merlin closes his spellbook.\n"
+    "Merlin is back to his crops.\n");
+}
 
 // Test(Enchanter, test_Enchanter_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
@@ -204,7 +204,7 @@ Test(Enchanter, test_Enchanter_attack, .signal = SIGPIPE, .init = redirect_all_s
 //     "Merlin learns magic from his spellbook.\n"
 //     "Merlin is out of power.\n"
 //     "Merlin eats.\n"
-//     "Merlin impales his ennemy.\n"
+//     "Merlin casts a fireball.\n"
 //     "Merlin is out of combat.\n"
 //     "Merlin closes his spellbook.\n"
 //     "Merlin is back to his crops.\n");
@@ -238,7 +238,7 @@ Test(Enchanter, test_Enchanter_attack, .signal = SIGPIPE, .init = redirect_all_s
 //     "Merlin don't know how to fight.\n"
 //     "Merlin is out of power.\n"
 //     "Merlin eats.\n"
-//     "Merlin impales his ennemy.\n"
+//     "Merlin casts a fireball.\n"
 //     "Merlin takes 50 damage.\n"
 //     "Merlin closes his spellbook.\n"
 //     "Merlin is back to his crops.\n");
