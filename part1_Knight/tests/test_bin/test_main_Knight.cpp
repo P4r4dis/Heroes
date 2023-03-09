@@ -166,3 +166,22 @@ Test(Knight, test_Knight_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
     "Arthur is out of combat.\n"
     "Arthur is back to his crops.\n");
 }
+
+Test(Knight, test_Knight_special, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Knight      k("Arthur", 42);
+
+    cr_assert(k.special() == 50);
+    cr_assert(k.special() == 0);
+
+    k.setHp(0);
+    cr_assert(k.special() == 0);
+
+    k.~Knight();
+    cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
+    "Arthur vows to protect the kingdom.\n"
+    "Arthur impales his ennemy.\n"
+    "Arthur is out of power.\n"
+    "Arthur is out of combat.\n"
+    "Arthur is back to his crops.\n");
+}

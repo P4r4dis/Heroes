@@ -3,13 +3,14 @@
 
 #include "test_Peasant.hpp"
 
-class       Knight : virtual public Peasant
+class                   Knight : virtual public Peasant
 {
     public:
         Knight(const std::string &name, int power);
         // ~Knight();
 
-        int attack();
+        int             attack(void);
+        int             special(void);
 
     protected:
     private:
