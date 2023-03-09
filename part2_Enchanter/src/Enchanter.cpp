@@ -28,33 +28,33 @@ int                     Enchanter::attack()
     }
 }
 
-// int                     Enchanter::special()
-// {
-//     int damageSpecial = 0;
+int                     Enchanter::special()
+{
+    int damageSpecial = 0;
 
-//     if(getHp() <= 0)
-//     {
-//         std::cout << getName() << " is out of combat." << std::endl;
+    if(getHp() <= 0)
+    {
+        std::cout << getName() << " is out of combat." << std::endl;
 
-//         return 0;
-//     }
-//     else if (getPower() >= 30)
-//     {
-//         setDamageSpecial(50);
-//         setCostSpecial(30);
-//         damageSpecial = getDamageSpecial();
-//         setPower(getPower() - getCostSpecial());
-//         std::cout << getName() << " impales his ennemy." << std::endl;
-//     }
-//     else
-//     {
-//         std::cout << getName() << " is out of power." << std::endl;
+        return 0;
+    }
+    else if (getPower() >= 50)
+    {
+        setDamageSpecial(99);
+        setCostSpecial(50);
+        damageSpecial = getDamageSpecial();
+        setPower(getPower() - getCostSpecial());
+        std::cout << getName() << " casts a fireball." << std::endl;
+    }
+    else
+    {
+        std::cout << getName() << " is out of power." << std::endl;
 
-//         return 0;
-//     }
+        return 0;
+    }
     
-//     return damageSpecial;
-// }
+    return damageSpecial;
+}
 
 // void                    Enchanter::rest()
 // {
