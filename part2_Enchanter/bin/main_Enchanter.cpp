@@ -2,7 +2,9 @@
 
 int main()
 {
-    Enchanter   E("Merlin", 20);
+    Enchanter   E("Jainna", 20);
+
+    E.attack();
     std::cout << "REAL MAIN STARTING :" << std::endl;
     return 0;
 }

@@ -7,6 +7,8 @@ class                   Enchanter : virtual public Peasant
     public:
         Enchanter(const std::string &name, int power);
         ~Enchanter(void);
+
+        int             attack(void);
     protected:
     private:
 
