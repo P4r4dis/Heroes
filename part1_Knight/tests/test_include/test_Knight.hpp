@@ -7,7 +7,7 @@ class                   Knight : virtual public Peasant
 {
     public:
         Knight(const std::string &name, int power);
-        // ~Knight();
+        ~Knight(void);
 
         int             attack(void);
         int             special(void);
