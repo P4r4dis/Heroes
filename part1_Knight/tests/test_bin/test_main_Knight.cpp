@@ -223,3 +223,26 @@ Test(Knight, test_Knight_destruction, .signal = SIGPIPE, .init = redirect_all_st
     "Arthur takes off his armor.\n"
     "Arthur is back to his crops.\n");
 }
+
+Test(Knight, test_Knight_main, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Knight      k("Arthur", 20);
+
+    k.attack();
+    k.special();
+    k.rest();
+    k.special();
+    k.damage(50);
+    cr_assert(k.getHp() == 50);
+
+    k.~Knight();
+    cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
+    "Arthur vows to protect the kingdom.\n"
+    "Arthur strikes with his sword.\n"
+    "Arthur is out of power.\n"
+    "Arthur eats.\n"
+    "Arthur impales his ennemy.\n"
+    "Arthur takes 50 damage.\n"
+    "Arthur takes off his armor.\n"
+    "Arthur is back to his crops.\n");
+}
