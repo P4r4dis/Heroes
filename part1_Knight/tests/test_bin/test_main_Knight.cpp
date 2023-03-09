@@ -6,6 +6,7 @@
 #include <signal.h>
 
 #include "../test_include/test_Peasant.hpp"
+#include "../test_include/test_Knight.hpp"
 
 void    redirect_all_stdout(void)
 {
@@ -128,4 +129,14 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
     "Gildas is out of combat.\n"
     "Gildas is out of combat.\n"
     "Gildas is back to his crops.\n");
+}
+
+
+Test(Knight, test_Knight_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Knight      k("Arthur", 20);
+
+    k.~Knight();
+    cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
+    "Arthur is back to his crops.\n");
 }
