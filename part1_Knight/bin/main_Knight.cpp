@@ -7,5 +7,6 @@ int main()
 
     k.attack();
     k.special();
+    k.rest();
     return 0;
 }
