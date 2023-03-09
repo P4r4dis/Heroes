@@ -186,29 +186,29 @@ Test(Enchanter, test_Enchanter_special, .signal = SIGPIPE, .init = redirect_all_
     "Merlin is back to his crops.\n");
 }
 
-// Test(Enchanter, test_Enchanter_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
-// {
-//     Enchanter      E("Merlin", 0);
+Test(Enchanter, test_Enchanter_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Enchanter      E("Merlin", 0);
 
-//     cr_assert(E.getPower() == 0);
-//     E.special();
-//     E.rest();
-//     cr_assert(E.getPower() == 50);
-//     E.special();
+    cr_assert(E.getPower() == 0);
+    E.special();
+    E.rest();
+    cr_assert(E.getPower() == 100);
+    E.special();
 
-//     E.setHp(0);
-//     E.rest();
+    E.setHp(0);
+    E.rest();
 
-//     E.~Enchanter();
-//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
-//     "Merlin learns magic from his spellbook.\n"
-//     "Merlin is out of power.\n"
-//     "Merlin eats.\n"
-//     "Merlin casts a fireball.\n"
-//     "Merlin is out of combat.\n"
-//     "Merlin closes his spellbook.\n"
-//     "Merlin is back to his crops.\n");
-// }
+    E.~Enchanter();
+    cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+    "Merlin learns magic from his spellbook.\n"
+    "Merlin is out of power.\n"
+    "Merlin meditates.\n"
+    "Merlin casts a fireball.\n"
+    "Merlin is out of combat.\n"
+    "Merlin closes his spellbook.\n"
+    "Merlin is back to his crops.\n");
+}
 
 // Test(Enchanter, test_Enchanter_destruction, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
@@ -237,7 +237,7 @@ Test(Enchanter, test_Enchanter_special, .signal = SIGPIPE, .init = redirect_all_
 //     "Merlin learns magic from his spellbook.\n"
 //     "Merlin don't know how to fight.\n"
 //     "Merlin is out of power.\n"
-//     "Merlin eats.\n"
+//     "Merlin meditates.\n"
 //     "Merlin casts a fireball.\n"
 //     "Merlin takes 50 damage.\n"
 //     "Merlin closes his spellbook.\n"
