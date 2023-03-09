@@ -135,20 +135,20 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
 }
 
 
-// Test(Enchanter, test_Enchanter_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
-// {
-//     Enchanter      k("Arthur", 20);
+Test(Enchanter, test_Enchanter_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Enchanter      E("Merlin", 20);
 
-//     k.~Enchanter();
-//     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
-//     "Arthur vows to protect the kingdom.\n"
-//     "Arthur takes off his armor.\n"
-//     "Arthur is back to his crops.\n");
-// }
+    E.~Enchanter();
+    cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+    "Merlin learns magic from his spellbook.\n"
+    "Merlin closes his spellbook.\n"
+    "Merlin is back to his crops.\n");
+}
 
 // Test(Enchanter, test_Enchanter_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Arthur", 20);
+//     Enchanter      k("Merlin", 20);
 
 //     k.attack();
 //     k.attack();
@@ -160,19 +160,19 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
 //     cr_assert(k.getDamageAttack() == 20);
 
 //     k.~Enchanter();
-//     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
-//     "Arthur vows to protect the kingdom.\n"
-//     "Arthur strikes with his sword.\n"
-//     "Arthur strikes with his sword.\n"
-//     "Arthur is out of power.\n"
-//     "Arthur is out of combat.\n"
-//     "Arthur takes off his armor.\n"
-//     "Arthur is back to his crops.\n");
+//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+//     "Merlin learns magic from his spellbook.\n"
+//     "Merlin strikes with his sword.\n"
+//     "Merlin strikes with his sword.\n"
+//     "Merlin is out of power.\n"
+//     "Merlin is out of combat.\n"
+//     "Merlin closes his spellbook.\n"
+//     "Merlin is back to his crops.\n");
 // }
 
 // Test(Enchanter, test_Enchanter_special, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Arthur", 42);
+//     Enchanter      k("Merlin", 42);
 
 //     cr_assert(k.special() == 50);
 //     cr_assert(k.special() == 0);
@@ -181,18 +181,18 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
 //     cr_assert(k.special() == 0);
 
 //     k.~Enchanter();
-//     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
-//     "Arthur vows to protect the kingdom.\n"
-//     "Arthur impales his ennemy.\n"
-//     "Arthur is out of power.\n"
-//     "Arthur is out of combat.\n"
-//     "Arthur takes off his armor.\n"
-//     "Arthur is back to his crops.\n");
+//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+//     "Merlin learns magic from his spellbook.\n"
+//     "Merlin impales his ennemy.\n"
+//     "Merlin is out of power.\n"
+//     "Merlin is out of combat.\n"
+//     "Merlin closes his spellbook.\n"
+//     "Merlin is back to his crops.\n");
 // }
 
 // Test(Enchanter, test_Enchanter_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Arthur", 0);
+//     Enchanter      k("Merlin", 0);
 
 //     cr_assert(k.getPower() == 0);
 //     k.special();
@@ -204,30 +204,30 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
 //     k.rest();
 
 //     k.~Enchanter();
-//     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
-//     "Arthur vows to protect the kingdom.\n"
-//     "Arthur is out of power.\n"
-//     "Arthur eats.\n"
-//     "Arthur impales his ennemy.\n"
-//     "Arthur is out of combat.\n"
-//     "Arthur takes off his armor.\n"
-//     "Arthur is back to his crops.\n");
+//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+//     "Merlin learns magic from his spellbook.\n"
+//     "Merlin is out of power.\n"
+//     "Merlin eats.\n"
+//     "Merlin impales his ennemy.\n"
+//     "Merlin is out of combat.\n"
+//     "Merlin closes his spellbook.\n"
+//     "Merlin is back to his crops.\n");
 // }
 
 // Test(Enchanter, test_Enchanter_destruction, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Arthur", 0);
+//     Enchanter      k("Merlin", 0);
 
 //     k.~Enchanter();
-//     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
-//     "Arthur vows to protect the kingdom.\n"
-//     "Arthur takes off his armor.\n"
-//     "Arthur is back to his crops.\n");
+//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+//     "Merlin learns magic from his spellbook.\n"
+//     "Merlin closes his spellbook.\n"
+//     "Merlin is back to his crops.\n");
 // }
 
 // Test(Enchanter, test_Enchanter_main, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
-//     Enchanter      k("Arthur", 20);
+//     Enchanter      k("Merlin", 20);
 
 //     k.attack();
 //     k.special();
@@ -237,13 +237,13 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
 //     cr_assert(k.getHp() == 50);
 
 //     k.~Enchanter();
-//     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
-//     "Arthur vows to protect the kingdom.\n"
-//     "Arthur strikes with his sword.\n"
-//     "Arthur is out of power.\n"
-//     "Arthur eats.\n"
-//     "Arthur impales his ennemy.\n"
-//     "Arthur takes 50 damage.\n"
-//     "Arthur takes off his armor.\n"
-//     "Arthur is back to his crops.\n");
+//     cr_assert_stdout_eq_str("Merlin goes for an adventure.\n"
+//     "Merlin learns magic from his spellbook.\n"
+//     "Merlin strikes with his sword.\n"
+//     "Merlin is out of power.\n"
+//     "Merlin eats.\n"
+//     "Merlin impales his ennemy.\n"
+//     "Merlin takes 50 damage.\n"
+//     "Merlin closes his spellbook.\n"
+//     "Merlin is back to his crops.\n");
 // }
