@@ -6,11 +6,6 @@ Peasant::Peasant(const std::string &name, int power)
         m_damageAttack(5), m_damageSpecial(0), m_rest(30)
 {
     std::cout << m_name << " goes for an adventure." << std::endl;
-    if (m_power <= 0)
-    {
-        m_power = 0;
-        std::cout << m_name << " is out of power." << std::endl;
-    }
 }
 
 Peasant::~Peasant(void)
@@ -67,20 +62,15 @@ void                    Peasant::setPower(int power)
 {
     (power > 100) ? m_power = 100 : m_power = power;
     if (m_power <= 0)
-    {
         m_power = 0;
-        std::cout << m_name << " is out of power." << std::endl;
-    }
+
 }
 
 void                    Peasant::setHp(int hp)
 {
     (hp > 100) ? m_hp = 100 : m_hp = hp;
     if (m_hp <= 0)
-    {
         m_hp = 0;
-        std::cout << m_name << " is out of combat." << std::endl;
-    }
 }
 
 void                    Peasant::setCostAttack(int costAttack)
@@ -115,17 +105,43 @@ void                    Peasant::setRest(int rest)
 
 int                     Peasant::attack()
 {
-    m_power -= m_costAttack;
-    std::cout << m_name << " tosses a stone." << std::endl;
-    
-    return m_damageAttack;
+    if (m_hp <= 0)
+    {
+        std::cout << m_name << " is out of combat." << std::endl;
+
+        return 0;
+    }
+    else if (m_power >= 10)
+    {
+        m_power -= m_costAttack;
+        std::cout << m_name << " tosses a stone." << std::endl;
+
+        return m_damageAttack;
+
+    }
+    else
+    {
+        std::cout << m_name << " is out of power." << std::endl;
+
+        return 0;
+    }    
 }
 
 int                     Peasant::special()
 {
-    m_power -= m_costSpecial;
-    std::cout << m_name << " doesn't know any special move." << std::endl;
-    return m_damageSpecial;
+    if (m_hp <= 0)
+    {
+        std::cout << m_name << " is out of combat." << std::endl;
+
+        return 0;
+    }
+    else
+    {
+        m_power -= m_costSpecial;
+        std::cout << m_name << " doesn't know any special move." << std::endl;
+
+        return m_damageSpecial;
+    }
 }
 
 void                    Peasant::rest()

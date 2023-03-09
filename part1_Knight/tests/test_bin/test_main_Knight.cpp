@@ -47,7 +47,9 @@ Test(Peasant, test_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
 Test(Peasant, test_out_of_combat_and_power, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
     Peasant     peasant("Gildas", 0);
+    peasant.attack();
     peasant.setHp(0);
+    peasant.attack();
 
     peasant.~Peasant();
     cr_assert_stdout_eq_str("Gildas goes for an adventure.\n"
@@ -147,10 +149,20 @@ Test(Knight, test_Knight_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
     Knight      k("Arthur", 20);
 
     k.attack();
-    cr_assert(k.getPower() == 10);
+    k.attack();
+    k.attack();
+    k.setHp(0);
+    k.attack();
+
+    cr_assert(k.getPower() == 0);
     cr_assert(k.getDamageAttack() == 20);
+
     k.~Knight();
     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
+    "Arthur vows to protect the kingdom.\n"
     "Arthur strikes with his sword.\n"
+    "Arthur strikes with his sword.\n"
+    "Arthur is out of power.\n"
+    "Arthur is out of combat.\n"
     "Arthur is back to his crops.\n");
 }
