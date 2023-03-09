@@ -58,3 +58,15 @@ int                     Knight::special()
     
     return damageSpecial;
 }
+
+void                    Knight::rest()
+{
+    if(getHp() <= 0)
+        std::cout << getName() << " is out of combat." << std::endl;
+    else
+    {
+        setRest(50);
+        setPower(getPower() + getRest());
+        std::cout << getName() << " eats." << std::endl;
+    }
+}
