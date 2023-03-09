@@ -6,5 +6,6 @@ int main()
     Knight      k("Thrall", 20);
 
     k.attack();
+
     return 0;
 }

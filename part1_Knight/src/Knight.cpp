@@ -9,12 +9,16 @@ int                     Knight::attack()
 {
     int damage = getDamageAttack();
 
-    if (getPower() >= 10)
+    if(getHp() <= 0)
+        std::cout << getName() << " is out of combat." << std::endl;
+    else if (getPower() >= 10)
     {
         setDamageAttack(20);
         setPower(getPower() - getCostAttack());
         std::cout << getName() << " strikes with his sword." << std::endl;
     }
+    else
+        std::cout << getName() << " is out of power." << std::endl;
     
     return damage;
 }
