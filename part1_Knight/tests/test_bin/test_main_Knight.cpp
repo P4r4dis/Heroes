@@ -138,5 +138,6 @@ Test(Knight, test_Knight_construction, .signal = SIGPIPE, .init = redirect_all_s
 
     k.~Knight();
     cr_assert_stdout_eq_str("Arthur goes for an adventure.\n"
+    "Arthur vows to protect the kingdom.\n"
     "Arthur is back to his crops.\n");
 }
