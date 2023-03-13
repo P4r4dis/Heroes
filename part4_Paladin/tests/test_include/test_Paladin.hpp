@@ -1,5 +1,5 @@
-#ifndef         __PALADIN__
-# define        __PALADIN__
+#ifndef         __TEST_PALADIN__
+# define        __TEST_PALADIN__
 
 #include "../include/Peasant.hpp"
 class                   Paladin : virtual public Peasant
@@ -16,4 +16,4 @@ class                   Paladin : virtual public Peasant
     private:
 
 };
-#endif //       !__PALADIN__
+#endif //       !__TEST_PALADIN__

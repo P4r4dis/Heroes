@@ -44,15 +44,19 @@ PART3_SRC_TEST			=	$(PART3_TST_PATH)/$(NAME_PRIEST)_test.cpp
 TEST_NAME_PRIEST 		= 	test_$(NAME_PRIEST)
 
 ###############################################
-# PART4_PATH 				= 	./part4_g-squad
-# PART4_SRC_PATH			=	./part4_g-squad/src
-# PART4_TST_PATH			=	./part4_g-squad/tests
-# PART4_INC_PATH			=	./part4_g-squad/include
-# NAME_GSQUAD				=	G-Squad
-# PART4_SRC				=	$(PART4_SRC_PATH)/Squad.cpp
+PART4_PATH 				= 	./part4_Paladin
+PART4_SRC_PATH			=	./part4_Paladin/src
+PART4_TST_PATH			=	./part4_Paladin/tests
+PART4_INC_PATH			=	./part4_Paladin/include
+NAME_PALADIN			=	Paladin
+PART4_SRC				=	$(PART4_SRC_PATH)/Peasant.cpp \
+							$(PART4_SRC_PATH)/Knight.cpp \
+							$(PART4_SRC_PATH)/Enchanter.cpp \
+							$(PART4_SRC_PATH)/Priest.cpp \
+							$(PART4_SRC_PATH)/Paladin.cpp
 
-# PART4_SRC_TEST			=	$(PART4_TST_PATH)/$(NAME_GSQUAD)_test.cpp
-# TEST_NAME_GSQUAD		= 	test_$(NAME_GSQUAD)
+PART4_SRC_TEST			=	$(PART4_TST_PATH)/$(NAME_PALADIN)_test.cpp
+TEST_NAME_PALADIN		= 	test_$(NAME_PALADIN)
 
 ###############################################
 
@@ -65,7 +69,7 @@ INCFLAGS				+=	-I $(PART0_INC_PATH)
 
 CPPFLAGS				+= 	-Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
 
-SRCS 					= 	$(PART3_SRC) \
+SRCS 					= 	$(PART4_SRC) \
 							$(BIN_PATH)/main.cpp
 # $(PART4_SRC)
 							
@@ -87,7 +91,7 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
 
 
@@ -101,8 +105,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART4_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART5_TST_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART5_PATH)
 
@@ -124,9 +128,9 @@ part3 					: 	fclean
 							@$(MAKE) -C $(PART3_PATH)
 							$(PART3_PATH)/$(NAME_PRIEST)
 
-# part4 					: 	fclean
-# 							@$(MAKE) -C $(PART4_PATH)
-# 							$(PART4_PATH)/$(NAME_GSQUAD)
+part4 					: 	fclean
+							@$(MAKE) -C $(PART4_PATH)
+							$(PART4_PATH)/$(NAME_PALADIN)
 
 tests_run_part0			:	fclean
 							@$(MAKE) -C $(PART0_TST_PATH)
@@ -144,16 +148,16 @@ tests_run_part3			:	fclean
 							@$(MAKE) -C $(PART3_TST_PATH)
 							$(PART3_TST_PATH)/$(TEST_NAME_PRIEST)
 
-# tests_run_part4			:	fclean
-# 							@$(MAKE) -C $(PART4_TST_PATH)
-# 							$(PART4_TST_PATH)/$(TEST_NAME_GSQUAD)
+tests_run_part4			:	fclean
+							@$(MAKE) -C $(PART4_TST_PATH)
+							$(PART4_TST_PATH)/$(TEST_NAME_PALADIN)
 
 tests_run				:	fclean
 							@$(MAKE) tests_run_part0
 							@$(MAKE) tests_run_part1
 							@$(MAKE) tests_run_part2
 							@$(MAKE) tests_run_part3
-# @$(MAKE) tests_run_part4
+							@$(MAKE) tests_run_part4
 
 
-.PHONY					: 	all clean fclean re part0 tests_run_part0 part1 tests_run_part1 part2 tests_run_part2 part3 tests_run_part3 tests_run
+.PHONY					: 	all clean fclean re part0 tests_run_part0 part1 tests_run_part1 part2 tests_run_part2 part3 tests_run_part3 part4 tests_run_part4 tests_run

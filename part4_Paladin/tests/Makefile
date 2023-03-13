@@ -4,9 +4,12 @@ TEST_SRC_PATH	=	./test_src
 TEST_INC_PATH	=	./test_include
 TEST_BIN_PATH	=	./test_bin
 TEST_SRC		=	$(TEST_SRC_PATH)/test_Peasant.cpp \
-					$(TEST_SRC_PATH)/test_Priest.cpp
+					$(TEST_SRC_PATH)/test_Knight.cpp \
+					$(TEST_SRC_PATH)/test_Enchanter.cpp \
+					$(TEST_SRC_PATH)/test_Priest.cpp \
+					$(TEST_SRC_PATH)/test_Paladin.cpp 
 
-NAME			=	test_Priest
+NAME			=	test_Paladin
 #############################################
 
 INCFLAGS		+=	-I$(TEST_INC_PATH)
@@ -14,7 +17,7 @@ CRITFLAGS		+=	--coverage -lcriterion --verbose
 CPPFLAGS		+=	-Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS)
 
 
-SRCS			=	$(TEST_BIN_PATH)/test_main_Priest.cpp \
+SRCS			=	$(TEST_BIN_PATH)/test_main_Paladin.cpp \
 					$(TEST_SRC)
 
 

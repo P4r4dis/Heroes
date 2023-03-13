@@ -15,8 +15,11 @@ CPPFLAGS	+= -Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
 
 
 SRCS		=	$(SRC_PATH)/Peasant.cpp \
+				$(SRC_PATH)/Knight.cpp \
+				$(SRC_PATH)/Enchanter.cpp \
 				$(SRC_PATH)/Priest.cpp \
-				$(BIN_PATH)/main_Priest.cpp
+				$(SRC_PATH)/Paladin.cpp \
+				$(BIN_PATH)/main_Paladin.cpp
 
 SRC_TEST	=	$(TST_PATH)/$(NAME)_test.cpp
 
