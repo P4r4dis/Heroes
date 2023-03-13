@@ -1,69 +1,171 @@
 #include "../test_include/test_Peasant.hpp"
 
-Priest::Priest(const std::string &name, int power) : Peasant(name, power)
+Peasant::Peasant(const std::string &name, int power)
+    :   m_name(name), m_power((power > 100) ? power = 100 : power),
+        m_hp(100), m_costAttack(10), m_costSpecial(0), m_costRest(0),
+        m_damageAttack(5), m_damageSpecial(0), m_rest(30)
 {
-    std::cout << getName() << " enters in the order." << std::endl;
+    std::cout << m_name << " goes for an adventure." << std::endl;
 }
 
-Priest::~Priest()
+Peasant::~Peasant(void)
 {
-    std::cout << getName() << " finds peace." << std::endl;
+    std::cout << m_name << " is back to his crops." << std::endl;
 }
 
-int                     Priest::attack()
+const std::string       &Peasant::getName(void) const
 {
-    if(getHp() <= 0)
+    return m_name;
+}
+
+int                     Peasant::getPower(void) const
+{
+    return m_power;
+}
+
+int                     Peasant::getHp(void) const
+{
+    return m_hp;
+}
+
+int                     Peasant::getCostAttack(void) const
+{
+    return m_costAttack;
+}
+
+int                     Peasant::getCostSpecial(void) const
+{
+    return m_costSpecial;
+}
+
+int                     Peasant::getCostRest(void) const
+{
+    return m_costRest;
+}
+
+int                     Peasant::getDamageAttack(void) const
+{
+    return m_damageAttack;
+}
+
+int                     Peasant::getDamageSpecial(void) const
+{
+    return m_damageSpecial;
+}
+
+int                     Peasant::getRest(void) const
+{
+    return m_rest;
+}
+
+void                    Peasant::setPower(int power)
+{
+    (power > 100) ? m_power = 100 : m_power = power;
+    if (m_power <= 0)
+        m_power = 0;
+
+}
+
+void                    Peasant::setHp(int hp)
+{
+    (hp > 100) ? m_hp = 100 : m_hp = hp;
+    if (m_hp <= 0)
+        m_hp = 0;
+}
+
+void                    Peasant::setCostAttack(int costAttack)
+{
+    m_costAttack = costAttack;
+}
+
+void                    Peasant::setCostSpecial(int costSpecial)
+{
+    m_costSpecial = costSpecial;
+}
+
+void                    Peasant::setCostRest(int costRest)
+{
+    m_costRest = costRest;
+}
+
+void                    Peasant::setDamageAttack(int damageAttack)
+{
+    m_damageAttack = damageAttack;
+}
+
+void                    Peasant::setDamageSpecial(int damageSpecial)
+{
+    m_damageSpecial = damageSpecial;
+}
+
+void                    Peasant::setRest(int rest)
+{
+    m_rest = rest;
+}
+
+int                     Peasant::attack()
+{
+    if (m_hp <= 0)
     {
-        std::cout << getName() << " is out of combat." << std::endl;
+        std::cout << m_name << " is out of combat." << std::endl;
+
+        return 0;
+    }
+    else if (m_power >= 10)
+    {
+        m_power -= m_costAttack;
+        std::cout << m_name << " tosses a stone." << std::endl;
+
+        return m_damageAttack;
+
+    }
+    else
+    {
+        std::cout << m_name << " is out of power." << std::endl;
+
+        return 0;
+    }    
+}
+
+int                     Peasant::special()
+{
+    if (m_hp <= 0)
+    {
+        std::cout << m_name << " is out of combat." << std::endl;
 
         return 0;
     }
     else
     {
-        setDamageAttack(0);
-        setCostAttack(0);
-        setPower(getPower() - getCostAttack());
-        std::cout << getName() << " don't know how to fight." << std::endl;
-        return getDamageAttack();
+        m_power -= m_costSpecial;
+        std::cout << m_name << " doesn't know any special move." << std::endl;
+
+        return m_damageSpecial;
     }
 }
 
-int                     Priest::special()
+void                    Peasant::rest()
 {
-    int damageSpecial = 0;
-
-    if(getHp() <= 0)
+    if (m_hp > 0)
     {
-        std::cout << getName() << " is out of combat." << std::endl;
-
-        return 0;
-    }
-    else if (getPower() >= 50)
-    {
-        setDamageSpecial(99);
-        setCostSpecial(50);
-        damageSpecial = getDamageSpecial();
-        setPower(getPower() - getCostSpecial());
-        std::cout << getName() << " casts a fireball." << std::endl;
+        m_power -= m_costRest;
+        m_power += m_rest;
+        if (m_power > 100)
+            m_power = 100;
+        std::cout << m_name << " takes a nap." << std::endl;
     }
     else
-    {
-        std::cout << getName() << " is out of power." << std::endl;
-
-        return 0;
-    }
-    
-    return damageSpecial;
+        std::cout << m_name << " is out of combat." << std::endl;
 }
 
-void                    Priest::rest()
+void                    Peasant::damage(int damage)
 {
-    if(getHp() <= 0)
-        std::cout << getName() << " is out of combat." << std::endl;
-    else
+    m_hp -= damage;
+    if (m_hp <= 0)
     {
-        setRest(100);
-        setPower(getPower() + getRest());
-        std::cout << getName() << " meditates." << std::endl;
+        m_hp = 0;
+        std::cout << m_name << " is out of combat." << std::endl;
     }
+    else
+        std::cout << m_name << " takes " << damage << " damage." << std::endl;
 }

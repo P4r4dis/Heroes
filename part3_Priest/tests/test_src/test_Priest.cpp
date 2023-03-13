@@ -64,6 +64,8 @@ void                    Priest::rest()
     {
         setRest(100);
         setPower(getPower() + getRest());
-        std::cout << getName() << " meditates." << std::endl;
+        setHp(getHp() + getRest());
+
+        std::cout << getName() << " prays." << std::endl;
     }
 }
