@@ -1,4 +1,4 @@
-#include "../test_include/test_Peasant.hpp"
+#include "../include/Peasant.hpp"
 
 Peasant::Peasant(const std::string &name, int power)
     :   m_name(name), m_power((power > 100) ? power = 100 : power),

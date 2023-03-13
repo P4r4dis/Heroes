@@ -137,108 +137,101 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
 
 Test(Priest, test_Priest_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
-    Priest      E("Trichelieu", 20);
+    Priest      P("Trichelieu", 20);
 
-    E.~Priest();
+    P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
 Test(Priest, test_Priest_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
-    Priest      E("Trichelieu", 20);
+    Priest      P("Trichelieu", 20);
 
-    E.attack();
-    E.setHp(0);
-    E.attack();
+    P.attack();
+    P.setHp(0);
+    P.attack();
 
-    cr_assert(E.getPower() == 20);
-    cr_assert(E.getDamageAttack() == 0);
+    cr_assert(P.getPower() == 20);
+    cr_assert(P.getDamageAttack() == 0);
 
-    E.~Priest();
+    P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu don't know how to fight.\n"
     "Trichelieu is out of combat.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
 Test(Priest, test_Priest_special, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
-    Priest      E("Trichelieu", 50);
+    Priest      P("Trichelieu", 50);
 
-    cr_assert(E.special() == 99);
-    cr_assert(E.special() == 0);
+    cr_assert(P.special() == 99);
+    cr_assert(P.special() == 0);
 
-    E.setHp(0);
-    cr_assert(E.special() == 0);
+    P.setHp(0);
+    cr_assert(P.special() == 0);
 
-    E.~Priest();
+    P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu casts a fireball.\n"
     "Trichelieu is out of power.\n"
     "Trichelieu is out of combat.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
 Test(Priest, test_Priest_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
-    Priest      E("Trichelieu", 0);
+    Priest      P("Trichelieu", 20);
 
-    cr_assert(E.getPower() == 0);
-    E.special();
-    E.rest();
-    cr_assert(E.getPower() == 100);
-    E.special();
+    cr_assert(P.getPower() == 20);
+    P.special();
+    P.rest();
+    cr_assert(P.getPower() == 100);
+    P.special();
 
-    E.setHp(0);
-    E.rest();
+    P.setHp(99);
+    P.rest();
+    cr_assert(P.getPower() == 100);
+    cr_assert(P.getHp() == 100);
 
-    E.~Priest();
+
+    P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu is out of power.\n"
-    "Trichelieu meditates.\n"
+    "Trichelieu prays.\n"
     "Trichelieu casts a fireball.\n"
-    "Trichelieu is out of combat.\n"
+    "Trichelieu prays.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
 Test(Priest, test_Priest_main, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
-    Priest      E("Trichelieu", 20);
+    Priest      P("Trichelieu", 20);
 
-    E.attack();
-    E.special();
-    E.rest();
-    E.special();
-    E.damage(50);
-    cr_assert(E.getHp() == 50);
+    P.attack();
+    P.special();
+    P.rest();
+    P.special();
+    P.damage(50);
+    cr_assert(P.getHp() == 50);
 
-    E.~Priest();
+    P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu don't know how to fight.\n"
     "Trichelieu is out of power.\n"
-    "Trichelieu meditates.\n"
+    "Trichelieu prays.\n"
     "Trichelieu casts a fireball.\n"
     "Trichelieu takes 50 damage.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
