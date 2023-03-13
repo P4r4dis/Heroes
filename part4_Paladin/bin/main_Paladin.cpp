@@ -2,18 +2,9 @@
 
 int main()
 {
-    Paladin   E("Jainna", 50);
+    Paladin   E("Uth", 99);
 
-    E.attack();
-    E.special();
-    E.rest();
     std::cout << "REAL MAIN STARTING :" << std::endl;
-    Paladin      enchanter("Merlin", 20);
 
-    enchanter.attack();
-    enchanter.special();
-    enchanter.rest();
-    enchanter.special();
-    enchanter.damage(50);
     return 0;
 }
