@@ -5,6 +5,7 @@
 #include "../include/Enchanter.hpp"
 #include "../include/Priest.hpp"
 
+
 class                   Paladin :   virtual public Knight, 
                                     virtual public Enchanter, 
                                     virtual public Priest
@@ -15,7 +16,7 @@ class                   Paladin :   virtual public Knight,
 
         int             attack(void);
         int             special(void);
-        // void            rest(void);
+        void            rest(void);
 
     protected:
     private:
