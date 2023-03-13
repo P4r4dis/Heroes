@@ -2,12 +2,12 @@
 
 Priest::Priest(const std::string &name, int power) : Peasant(name, power)
 {
-    std::cout << getName() << " learns magic from his spellbook." << std::endl;
+    std::cout << getName() << " enters in the order." << std::endl;
 }
 
 Priest::~Priest()
 {
-    std::cout << getName() << " closes his spellbook." << std::endl;
+    std::cout << getName() << " finds peace." << std::endl;
 }
 
 int                     Priest::attack()
