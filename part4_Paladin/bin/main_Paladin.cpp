@@ -2,12 +2,11 @@
 
 int main()
 {
-    Paladin   P("Uth", 99);
-
-    P.attack();
-    P.special();
-    P.rest();
-    std::cout << "REAL MAIN STARTING :" << std::endl;
-
+    Paladin paladin("Uther", 99);
+    paladin.attack();
+    paladin.special();
+    paladin.rest();
+    paladin.special();
+    paladin.damage(50);
     return 0;
 }
