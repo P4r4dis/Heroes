@@ -7,6 +7,7 @@
 
 
 class                   Paladin :   virtual public Knight, 
+                                    virtual public Enchanter, 
                                     virtual public Priest
 {
     public:

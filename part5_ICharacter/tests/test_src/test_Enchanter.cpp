@@ -1,16 +1,16 @@
-#include "../test_include/test_Priest.hpp"
+#include "../test_include/test_Enchanter.hpp"
 
-Priest::Priest(const std::string &name, int power) : Peasant(name, power), Enchanter(name, power)
+Enchanter::Enchanter(const std::string &name, int power) : Peasant(name, power)
 {
-    std::cout << getName() << " enters in the order." << std::endl;
+    std::cout << getName() << " learns magic from his spellbook." << std::endl;
 }
 
-Priest::~Priest()
+Enchanter::~Enchanter()
 {
-    std::cout << getName() << " finds peace." << std::endl;
+    std::cout << getName() << " closes his spellbook." << std::endl;
 }
 
-int                     Priest::attack()
+int                     Enchanter::attack()
 {
     if(getHp() <= 0)
     {
@@ -28,7 +28,7 @@ int                     Priest::attack()
     }
 }
 
-int                     Priest::special()
+int                     Enchanter::special()
 {
     int damageSpecial = 0;
 
@@ -56,7 +56,7 @@ int                     Priest::special()
     return damageSpecial;
 }
 
-void                    Priest::rest()
+void                    Enchanter::rest()
 {
     if(getHp() <= 0)
         std::cout << getName() << " is out of combat." << std::endl;
@@ -64,8 +64,6 @@ void                    Priest::rest()
     {
         setRest(100);
         setPower(getPower() + getRest());
-        setHp(getHp() + getRest());
-
-        std::cout << getName() << " prays." << std::endl;
+        std::cout << getName() << " meditates." << std::endl;
     }
 }
