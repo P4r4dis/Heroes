@@ -141,10 +141,8 @@ Test(Priest, test_Priest_construction, .signal = SIGPIPE, .init = redirect_all_s
 
     P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
@@ -161,12 +159,10 @@ Test(Priest, test_Priest_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
 
     P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu don't know how to fight.\n"
     "Trichelieu is out of combat.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
@@ -182,13 +178,11 @@ Test(Priest, test_Priest_special, .signal = SIGPIPE, .init = redirect_all_stdout
 
     P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu casts a fireball.\n"
     "Trichelieu is out of power.\n"
     "Trichelieu is out of combat.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
@@ -210,14 +204,12 @@ Test(Priest, test_Priest_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
 
     P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu is out of power.\n"
     "Trichelieu prays.\n"
     "Trichelieu casts a fireball.\n"
     "Trichelieu prays.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }
 
@@ -234,7 +226,6 @@ Test(Priest, test_Priest_main, .signal = SIGPIPE, .init = redirect_all_stdout)
 
     P.~Priest();
     cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu learns magic from his spellbook.\n"
     "Trichelieu enters in the order.\n"
     "Trichelieu don't know how to fight.\n"
     "Trichelieu is out of power.\n"
@@ -242,6 +233,5 @@ Test(Priest, test_Priest_main, .signal = SIGPIPE, .init = redirect_all_stdout)
     "Trichelieu casts a fireball.\n"
     "Trichelieu takes 50 damage.\n"
     "Trichelieu finds peace.\n"
-    "Trichelieu closes his spellbook.\n"
     "Trichelieu is back to his crops.\n");
 }

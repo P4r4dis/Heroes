@@ -4,7 +4,6 @@ TEST_SRC_PATH	=	./test_src
 TEST_INC_PATH	=	./test_include
 TEST_BIN_PATH	=	./test_bin
 TEST_SRC		=	$(TEST_SRC_PATH)/test_Peasant.cpp \
-					$(TEST_SRC_PATH)/test_Enchanter.cpp \
 					$(TEST_SRC_PATH)/test_Priest.cpp
 
 NAME			=	test_Priest
