@@ -15,7 +15,7 @@ class                   Paladin :   virtual public Knight,
 
         int             attack(void);
         int             special(void);
-        // void            rest(void);
+        void            rest(void);
 
     protected:
     private:
