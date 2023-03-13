@@ -13,7 +13,12 @@ Paladin::~Paladin(void)
     std::cout << getName() << " is blessed." << std::endl;
 }
 
-int     Paladin::attack()
+int                     Paladin::attack(void)
 {
     return Knight::attack();
+}
+
+int                     Paladin::special(void)
+{
+    return Enchanter::special();
 }
