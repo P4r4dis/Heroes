@@ -13,7 +13,7 @@ class                   Paladin :   virtual public Knight,
         Paladin(const std::string &name, int power);
         ~Paladin(void);
 
-        // int             attack(void);
+        int             attack(void);
         // int             special(void);
         // void            rest(void);
 
