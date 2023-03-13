@@ -6,7 +6,7 @@
 #include <signal.h>
 
 #include "../test_include/test_Peasant.hpp"
-#include "../test_include/test_Priest.hpp"
+#include "../test_include/test_Paladin.hpp"
 
 
 void    redirect_all_stdout(void)
@@ -135,103 +135,109 @@ Test(Peasant, test_mainFunction, .signal = SIGPIPE, .init = redirect_all_stdout)
 }
 
 
-Test(Priest, test_Priest_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
+Test(Paladin, test_Paladin_construction, .signal = SIGPIPE, .init = redirect_all_stdout)
 {
-    Priest      P("Trichelieu", 20);
+    Paladin      P("Uther", 99);
 
-    P.~Priest();
-    cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu enters in the order.\n"
-    "Trichelieu finds peace.\n"
-    "Trichelieu is back to his crops.\n");
+    P.~Paladin();
+    cr_assert_stdout_eq_str("Uther goes for an adventure.\n"
+    "Uther vows to protect the kingdom.\n"
+    "Uther learns magic from his spellbook.\n"
+    "Uther enters in the order.\n"
+    "Uther fights for the light.\n"
+    "Uther is blessed.\n"
+    "Uther finds peace.\n"
+    "Uther closes his spellbook.\n"
+    "Uther takes off his armor.\n"
+    "Uther is back to his crops.\n");
 }
 
-Test(Priest, test_Priest_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
-{
-    Priest      P("Trichelieu", 20);
+// Test(Paladin, test_Paladin_attack, .signal = SIGPIPE, .init = redirect_all_stdout)
+// {
+//     Paladin      P("Uther", 20);
 
-    P.attack();
-    P.setHp(0);
-    P.attack();
+//     P.attack();
+//     P.setHp(0);
+//     P.attack();
 
-    cr_assert(P.getPower() == 20);
-    cr_assert(P.getDamageAttack() == 0);
+//     cr_assert(P.getPower() == 20);
+//     cr_assert(P.getDamageAttack() == 0);
 
-    P.~Priest();
-    cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu enters in the order.\n"
-    "Trichelieu don't know how to fight.\n"
-    "Trichelieu is out of combat.\n"
-    "Trichelieu finds peace.\n"
-    "Trichelieu is back to his crops.\n");
-}
+//     P.~Paladin();
+//     cr_assert_stdout_eq_str("Uther goes for an adventure.\n"
+//     "Uther enters in the order.\n"
+//     "Uther don't know how to fight.\n"
+//     "Uther is out of combat.\n"
+//     "Uther finds peace.\n"
+//     "Uther is back to his crops.\n");
+// }
 
-Test(Priest, test_Priest_special, .signal = SIGPIPE, .init = redirect_all_stdout)
-{
-    Priest      P("Trichelieu", 50);
+// Test(Paladin, test_Paladin_special, .signal = SIGPIPE, .init = redirect_all_stdout)
+// {
+//     Paladin      P("Uther", 50);
 
-    cr_assert(P.special() == 99);
-    cr_assert(P.special() == 0);
+//     cr_assert(P.special() == 99);
+//     cr_assert(P.special() == 0);
 
-    P.setHp(0);
-    cr_assert(P.special() == 0);
+//     P.setHp(0);
+//     cr_assert(P.special() == 0);
 
-    P.~Priest();
-    cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu enters in the order.\n"
-    "Trichelieu casts a fireball.\n"
-    "Trichelieu is out of power.\n"
-    "Trichelieu is out of combat.\n"
-    "Trichelieu finds peace.\n"
-    "Trichelieu is back to his crops.\n");
-}
+//     P.~Paladin();
+//     cr_assert_stdout_eq_str("Uther goes for an adventure.\n"
+//     "Uther enters in the order.\n"
+//     "Uther casts a fireball.\n"
+//     "Uther is out of power.\n"
+//     "Uther is out of combat.\n"
+//     "Uther finds peace.\n"
+//     "Uther is back to his crops.\n");
+// }
 
-Test(Priest, test_Priest_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
-{
-    Priest      P("Trichelieu", 20);
+// Test(Paladin, test_Paladin_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
+// {
+//     Paladin      P("Uther", 20);
 
-    cr_assert(P.getPower() == 20);
-    P.special();
-    P.rest();
-    cr_assert(P.getPower() == 100);
-    P.special();
+//     cr_assert(P.getPower() == 20);
+//     P.special();
+//     P.rest();
+//     cr_assert(P.getPower() == 100);
+//     P.special();
 
-    P.setHp(99);
-    P.rest();
-    cr_assert(P.getPower() == 100);
-    cr_assert(P.getHp() == 100);
+//     P.setHp(99);
+//     P.rest();
+//     cr_assert(P.getPower() == 100);
+//     cr_assert(P.getHp() == 100);
 
 
-    P.~Priest();
-    cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu enters in the order.\n"
-    "Trichelieu is out of power.\n"
-    "Trichelieu prays.\n"
-    "Trichelieu casts a fireball.\n"
-    "Trichelieu prays.\n"
-    "Trichelieu finds peace.\n"
-    "Trichelieu is back to his crops.\n");
-}
+//     P.~Paladin();
+//     cr_assert_stdout_eq_str("Uther goes for an adventure.\n"
+//     "Uther enters in the order.\n"
+//     "Uther is out of power.\n"
+//     "Uther prays.\n"
+//     "Uther casts a fireball.\n"
+//     "Uther prays.\n"
+//     "Uther finds peace.\n"
+//     "Uther is back to his crops.\n");
+// }
 
-Test(Priest, test_Priest_main, .signal = SIGPIPE, .init = redirect_all_stdout)
-{
-    Priest      P("Trichelieu", 20);
+// Test(Paladin, test_Paladin_main, .signal = SIGPIPE, .init = redirect_all_stdout)
+// {
+//     Paladin      P("Uther", 20);
 
-    P.attack();
-    P.special();
-    P.rest();
-    P.special();
-    P.damage(50);
-    cr_assert(P.getHp() == 50);
+//     P.attack();
+//     P.special();
+//     P.rest();
+//     P.special();
+//     P.damage(50);
+//     cr_assert(P.getHp() == 50);
 
-    P.~Priest();
-    cr_assert_stdout_eq_str("Trichelieu goes for an adventure.\n"
-    "Trichelieu enters in the order.\n"
-    "Trichelieu don't know how to fight.\n"
-    "Trichelieu is out of power.\n"
-    "Trichelieu prays.\n"
-    "Trichelieu casts a fireball.\n"
-    "Trichelieu takes 50 damage.\n"
-    "Trichelieu finds peace.\n"
-    "Trichelieu is back to his crops.\n");
-}
+//     P.~Paladin();
+//     cr_assert_stdout_eq_str("Uther goes for an adventure.\n"
+//     "Uther enters in the order.\n"
+//     "Uther don't know how to fight.\n"
+//     "Uther is out of power.\n"
+//     "Uther prays.\n"
+//     "Uther casts a fireball.\n"
+//     "Uther takes 50 damage.\n"
+//     "Uther finds peace.\n"
+//     "Uther is back to his crops.\n");
+// }
