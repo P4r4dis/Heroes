@@ -2,8 +2,9 @@
 
 int main()
 {
-    Paladin   E("Uth", 99);
+    Paladin   P("Uth", 99);
 
+    P.attack();
     std::cout << "REAL MAIN STARTING :" << std::endl;
 
     return 0;

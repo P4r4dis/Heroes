@@ -12,3 +12,8 @@ Paladin::~Paladin(void)
 {
     std::cout << getName() << " is blessed." << std::endl;
 }
+
+int     Paladin::attack()
+{
+    return Knight::attack();
+}
