@@ -183,25 +183,31 @@ Test(Paladin, test_Paladin_attack, .signal = SIGPIPE, .init = redirect_all_stdou
     "Uther is back to his crops.\n");
 }
 
-// Test(Paladin, test_Paladin_special, .signal = SIGPIPE, .init = redirect_all_stdout)
-// {
-//     Paladin      P("Uther", 50);
+Test(Paladin, test_Paladin_special, .signal = SIGPIPE, .init = redirect_all_stdout)
+{
+    Paladin      P("Uther", 50);
 
-//     cr_assert(P.special() == 99);
-//     cr_assert(P.special() == 0);
+    cr_assert(P.special() == 99);
+    cr_assert(P.special() == 0);
 
-//     P.setHp(0);
-//     cr_assert(P.special() == 0);
+    P.setHp(0);
+    cr_assert(P.special() == 0);
 
-//     P.~Paladin();
-//     cr_assert_stdout_eq_str("Uther goes for an adventure.\n"
-//     "Uther enters in the order.\n"
-//     "Uther casts a fireball.\n"
-//     "Uther is out of power.\n"
-//     "Uther is out of combat.\n"
-//     "Uther finds peace.\n"
-//     "Uther is back to his crops.\n");
-// }
+    P.~Paladin();
+    cr_assert_stdout_eq_str("Uther goes for an adventure.\n"
+    "Uther vows to protect the kingdom.\n"
+    "Uther learns magic from his spellbook.\n"
+    "Uther enters in the order.\n"
+    "Uther fights for the light.\n"
+    "Uther casts a fireball.\n"
+    "Uther is out of power.\n"
+    "Uther is out of combat.\n"
+    "Uther is blessed.\n"
+    "Uther finds peace.\n"
+    "Uther closes his spellbook.\n"
+    "Uther takes off his armor.\n"
+    "Uther is back to his crops.\n");
+}
 
 // Test(Paladin, test_Paladin_rest, .signal = SIGPIPE, .init = redirect_all_stdout)
 // {
