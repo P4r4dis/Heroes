@@ -73,17 +73,36 @@ PART5_SRC				=	$(PART5_SRC_PATH)/Peasant.cpp \
 
 PART5_SRC_TEST			=	$(PART5_TST_PATH)/$(NAME_ICHARACTER)_test.cpp
 TEST_NAME_ICHARACTER	= 	test_$(NAME_ICHARACTER)
+##################################################
+PART6_PATH 				= 	./part6_IPotion
+PART6_SRC_PATH			=	./part6_IPotion/src
+PART6_TST_PATH			=	./part6_IPotion/tests
+PART6_INC_PATH			=	./part6_IPotion/include
+NAME_IPOTION			=	IPotion
+PART6_SRC				=	$(PART6_SRC_PATH)/Peasant.cpp \
+							$(PART6_SRC_PATH)/Knight.cpp \
+							$(PART6_SRC_PATH)/Enchanter.cpp \
+							$(PART6_SRC_PATH)/Priest.cpp \
+							$(PART6_SRC_PATH)/Paladin.cpp \
+							$(PART6_SRC_PATH)/ICharacter.cpp \
+							$(PART6_SRC_PATH)/IPotion.cpp \
+							$(PART6_SRC_PATH)/HealthPotion.cpp \
+							$(PART6_SRC_PATH)/PowerPotion.cpp \
+							$(PART6_SRC_PATH)/PoisonPotion.cpp \
+
+PART6_SRC_TEST			=	$(PART6_TST_PATH)/$(NAME_IPOTION)_test.cpp
+TEST_NAME_IPOTION		= 	test_$(NAME_IPOTION)
 
 BIN_PATH				=	./bin
 
 NAME					=	Heroes
 TEST_NAME 				= 	test_$(NAME)
 
-INCFLAGS				+=	-I $(PART0_INC_PATH)
+INCFLAGS				+=	-I $(PART6_INC_PATH)
 
 CPPFLAGS				+= 	-Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
 
-SRCS 					= 	$(PART5_SRC) \
+SRCS 					= 	$(PART6_SRC) \
 							$(BIN_PATH)/main.cpp
 # $(PART4_SRC)
 							
@@ -107,6 +126,8 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART6_TST_PATH)
+
 
 
 fclean					:	clean
@@ -123,6 +144,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART4_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART5_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART5_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART6_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART6_PATH)
 
 re						: 	fclean all
 
@@ -150,6 +173,10 @@ part5 					: 	fclean
 							@$(MAKE) -C $(PART5_PATH)
 							$(PART5_PATH)/$(NAME_ICHARACTER)
 
+part6 					: 	fclean
+							@$(MAKE) -C $(PART6_PATH)
+							$(PART6_PATH)/$(NAME_IPOTION)
+
 tests_run_part0			:	fclean
 							@$(MAKE) -C $(PART0_TST_PATH)
 							$(PART0_TST_PATH)/$(TEST_NAME_PEASANT)
@@ -174,6 +201,10 @@ tests_run_part5			:	fclean
 							@$(MAKE) -C $(PART5_TST_PATH)
 							$(PART5_TST_PATH)/$(TEST_NAME_ICHARACTER)
 
+tests_run_part6			:	fclean
+							@$(MAKE) -C $(PART6_TST_PATH)
+							$(PART6_TST_PATH)/$(TEST_NAME_IPOTION)
+
 tests_run				:	fclean
 							@$(MAKE) tests_run_part0
 							@$(MAKE) tests_run_part1
@@ -181,6 +212,6 @@ tests_run				:	fclean
 							@$(MAKE) tests_run_part3
 							@$(MAKE) tests_run_part4
 							@$(MAKE) tests_run_part5
+							@$(MAKE) tests_run_part6
 
-
-.PHONY					: 	all clean fclean re part0 tests_run_part0 part1 tests_run_part1 part2 tests_run_part2 part3 tests_run_part3 part4 tests_run_part4 part5 tests_run_part5 tests_run
+.PHONY					: 	all clean fclean re part0 tests_run_part0 part1 tests_run_part1 part2 tests_run_part2 part3 tests_run_part3 part4 tests_run_part4 part5 tests_run_part5 part6 tests_run_part6 tests_run
