@@ -2,12 +2,10 @@
 # define        __PALADIN__
 
 #include "../include/Knight.hpp"
-#include "../include/Enchanter.hpp"
 #include "../include/Priest.hpp"
 
 
 class                   Paladin :   virtual public Knight, 
-                                    virtual public Enchanter, 
                                     virtual public Priest
 {
     public:

@@ -1,7 +1,7 @@
 #ifndef     __TEST_ICHARACTER__
 # define    __TEST_ICHARACTER__
 
-#include <memory>
+#include <iostream>
 
 class                   ICharacter
 {
