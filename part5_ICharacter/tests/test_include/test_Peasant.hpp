@@ -3,7 +3,8 @@
 
 #include <string>
 #include <iostream>
-class                       Peasant
+#include "test_ICharacter.hpp"
+class                       Peasant : virtual public ICharacter
 {
     public:
         Peasant(const std::string &name, int power);
