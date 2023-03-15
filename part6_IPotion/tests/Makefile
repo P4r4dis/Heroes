@@ -12,14 +12,14 @@ TEST_SRC		=	$(TEST_SRC_PATH)/test_Peasant.cpp \
 					$(TEST_SRC_PATH)/test_IPotion.cpp \
 					$(TEST_SRC_PATH)/test_HealthPotion.cpp \
 					$(TEST_SRC_PATH)/test_PowerPotion.cpp \
-					$(TEST_SRC_PATH)/test_PoisonPotion.cpp \
+					$(TEST_SRC_PATH)/test_PoisonPotion.cpp
 
 NAME			=	test_IPotion
 #############################################
 
 INCFLAGS		+=	-I$(TEST_INC_PATH)
 CRITFLAGS		+=	--coverage -lcriterion --verbose
-CPPFLAGS		+=	-Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS)
+CPPFLAGS		+=	-std=c++20 -Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS)
 
 
 SRCS			=	$(TEST_BIN_PATH)/test_main_IPotion.cpp \
