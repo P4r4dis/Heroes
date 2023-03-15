@@ -1,5 +1,4 @@
 #include "../include/Peasant.hpp"
-
 Peasant::Peasant(const std::string &name, int power)
     :   m_name(name), m_power((power > 100) ? power = 100 : power),
         m_hp(100), m_costAttack(10), m_costSpecial(0), m_costRest(0),
@@ -131,7 +130,7 @@ int                     Peasant::special()
 {
     if (m_hp <= 0)
     {
-        std::cout << m_name << " is out of combat." << std::endl;
+        std::cout << m_name << " is out of combat.2" << std::endl;
 
         return 0;
     }
@@ -168,4 +167,28 @@ void                    Peasant::damage(int damage)
     }
     else
         std::cout << m_name << " takes " << damage << " damage." << std::endl;
+}
+
+void                    Peasant::drink(const HealthPotion &potion)
+{
+    setHp(m_hp + potion.getHealthPotion());
+    std::cout << m_name <<  " feels rejuvenated." << std::endl;
+}
+
+void                    Peasant::drink(const PowerPotion &potion)
+{
+    setPower(m_power + potion.getPowerPotion());
+    std::cout << m_name <<  " power is restored." << std::endl;
+}
+
+void                    Peasant::drink(const PoisonPotion &potion)
+{
+    setHp(m_hp - potion.getPoisonPotion());
+    std::cout << m_name << " has been poisoned." << std::endl;
+}
+
+void                    Peasant::drink(const IPotion &potion)
+{
+    setHp(m_hp + potion.getHealthPotion());
+    std::cout << m_name << " drinks a mysterious potion." << std::endl;
 }

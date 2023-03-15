@@ -2,9 +2,12 @@
 # define        __ICHARACTER__
 
 #include <iostream>
+#include "HealthPotion.hpp"
+#include "PowerPotion.hpp"
+#include "PoisonPotion.hpp"
+#include "IPotion.hpp"
 
-
-class                   ICharacter
+class                                   ICharacter
 {
     public:
         virtual ~ICharacter(void);
@@ -16,6 +19,12 @@ class                   ICharacter
         virtual const std::string       &getName(void) const = 0;
         virtual int                     getHp(void) const = 0;
         virtual int                     getPower(void) const = 0;
+        virtual void                    drink(const HealthPotion &healthPotion) = 0;
+        virtual void                    drink(const PowerPotion &powerPotion) = 0;
+        virtual void                    drink(const PoisonPotion &poisonPotion) = 0;
+        virtual void                    drink(const IPotion &Potion) = 0;
+
+
 
     protected:
     private:

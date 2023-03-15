@@ -4,8 +4,12 @@
 #include <iostream>
 
 #include "../include/ICharacter.hpp"
+#include "../include/HealthPotion.hpp"
+#include "../include/PoisonPotion.hpp"
+#include "../include/PowerPotion.hpp"
+#include "../include/IPotion.hpp"
 
-class                       Peasant :   virtual public ICharacter
+class                       Peasant : public ICharacter
 {
     public:
         Peasant(const std::string &name, int power);
@@ -35,6 +39,12 @@ class                       Peasant :   virtual public ICharacter
         void                rest(void);
 
         void                damage(int damage);
+
+        void                drink(const HealthPotion &potion);
+        void                drink(const PowerPotion &potion);
+        void                drink(const PoisonPotion &potion);
+        void                drink(const IPotion &potion);
+
     protected:
     private:
         const std::string   m_name;
